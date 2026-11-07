@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaylhee B. Bobita | IT Portfolio</title>
+  <meta name="description" content="Personal portfolio of Jaylhee B. Bobita - BSIT Student, Networking, System Troubleshooting, and Web Application Developer." />
+  <meta name="author" content="Jaylhee B. Bobita" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%2362c396'/><text x='50%' y='56%' font-family='sans-serif' font-size='38' font-weight='600' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>JB</text></svg>" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit (Clean, feminine, modern typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration with Strict Color Enforcement -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            // Strict Color Scheme: Baby Green / Pastel Sage Accents (No Neon, No Glow)
+            babygreen: {
+              50: '#f2f9f5',
+              100: '#e3f3eb',
+              200: '#c8e7d7',
+              300: '#a3d6bc',
+              400: '#75be9c',
+              500: '#52a681', // Refined, soft baby/sage green
+              600: '#3f8868',
+              700: '#336d54',
+              800: '#2b5744',
+              900: '#244839',
+            },
+            // Matte, flat dark palette
+            slate: {
+              850: '#141d2e',
+              900: '#0f172a',
+              950: '#090e17',
+            }
+          },
+          borderWidth: {
+            '1': '1px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
+  <style>
+    /* Custom refined styling with strictly flat aesthetics */
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Flat thin border accents */
+    .thin-border {
+      border: 1px solid rgba(163, 214, 188, 0.35);
+    }
+    .dark .thin-border {
+      border: 1px solid rgba(117, 190, 156, 0.22);
+    }
+
+    /* Modal transition */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    .modal-enter-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 180ms ease-out, transform 180ms ease-out;
+    }
+    .modal-exit {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modal-exit-active {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 150ms ease-in, transform 150ms ease-in;
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c8e7d7;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #2b394e;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a3d6bc;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #3b4d66;
+    }
+  </style>
+</head>
+
+<body class="bg-[#fcfdfd] dark:bg-slate-900 text-slate-700 dark:text-slate-300 transition-colors duration-200 antialiased min-h-screen flex flex-col selection:bg-babygreen-100 dark:selection:bg-babygreen-900/60 selection:text-babygreen-800 dark:selection:text-babygreen-200">
+
+  <!-- ==========================================
+       1. STICKY HEADER & NAVIGATION
+       ========================================== -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-slate-200/70 dark:border-slate-800 transition-colors duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Left: Logo & Name -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-9 h-9 rounded-full bg-babygreen-100 dark:bg-slate-800 border border-babygreen-300/80 dark:border-babygreen-700/60 flex items-center justify-center text-babygreen-700 dark:text-babygreen-400 font-display font-semibold text-sm tracking-wide transition-colors">
+            JB
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm font-semibold tracking-tight text-slate-900 dark:text-white font-display group-hover:text-babygreen-600 dark:group-hover:text-babygreen-400 transition-colors">
+              Jaylhee B. Bobita
+            </span>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">
+              BSIT Student
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-[13px] font-medium" id="desktop-nav">
+          <a href="#hero" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Home</a>
+          <a href="#education" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Education</a>
+          <a href="#skills" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Skills</a>
+          <a href="#projects" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Projects</a>
+          <a href="#certificates" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Certificates</a>
+          <a href="#contact" class="nav-link px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:text-babygreen-700 dark:hover:text-babygreen-400 hover:bg-babygreen-50/70 dark:hover:bg-slate-800/80 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Controls: Theme Toggle & Mobile Menu Button -->
+        <div class="flex items-center space-x-2">
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" aria-label="Toggle Dark / Light Theme" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-babygreen-50/80 dark:hover:bg-slate-800 border border-transparent hover:border-babygreen-200 dark:hover:border-slate-700 transition-colors focus:outline-none focus:ring-1 focus:ring-babygreen-400">
+            <!-- Sun Icon (visible in dark mode) -->
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-babygreen-300"></i>
+            <!-- Moon Icon (visible in light mode) -->
+            <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+          </button>
+
+          <!-- Contact Mini Button (Desktop) -->
+          <a href="#contact" class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-babygreen-500 hover:bg-babygreen-600 text-white transition-colors">
+            <span>Connect</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-btn" aria-label="Toggle Mobile Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-babygreen-50 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+            <i data-lucide="menu" id="menu-icon-open" class="w-5 h-5 block"></i>
+            <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1 transition-all">
+      <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Home</a>
+      <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Education</a>
+      <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Skills</a>
+      <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Projects</a>
+      <a href="#certificates" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Certificates</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-babygreen-50 dark:hover:bg-slate-800 hover:text-babygreen-700 dark:hover:text-babygreen-400 transition-colors">Contact</a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16 sm:space-y-24">
+
+    <!-- ==========================================
+         2. HERO / ABOUT ME SECTION
+         ========================================== -->
+    <section id="hero" class="scroll-mt-24 pt-4 sm:pt-8">
+      <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16">
+        
+        <!-- Hero Text -->
+        <div class="w-full md:w-3/5 text-center md:text-left space-y-4">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-babygreen-50 dark:bg-slate-800 border border-babygreen-200 dark:border-babygreen-800/80 text-babygreen-700 dark:text-babygreen-400 text-xs font-semibold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-babygreen-500 animate-pulse"></span>
+            <span id="hero-badge">Welcome to My Portfolio</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display tracking-tight text-slate-900 dark:text-white leading-tight">
+            Hi, I'm <span class="text-babygreen-600 dark:text-babygreen-400 font-semibold" id="hero-name">Jaylhee B. Bobita</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl" id="hero-bio">
+            Information Technology student at Data Center College of the Philippines - Bangued with a solid foundation in networking principles, hardware/software troubleshooting, and modern productivity workflows. Striving to build functional, clean, and dependable technology solutions.
+          </p>
+
+          <!-- Quick Metadata Chips -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs text-slate-600 dark:text-slate-400">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-babygreen-600 dark:text-babygreen-400"></i>
+              Bangued, Abra
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60">
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-babygreen-600 dark:text-babygreen-400"></i>
+              BSIT Student
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/60">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-babygreen-600 dark:text-babygreen-400"></i>
+              DICT & Cisco Certified
+            </span>
+          </div>
+
+          <!-- Hero Actions -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-4">
+            <a href="#projects" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-babygreen-500 hover:bg-babygreen-600 text-white transition-colors duration-150">
+              <span>View My Projects</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+
+            <a href="#contact" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-babygreen-400 dark:hover:border-babygreen-600 transition-colors duration-150">
+              <i data-lucide="mail" class="w-4 h-4 text-babygreen-600 dark:text-babygreen-400"></i>
+              <span>Get in Touch</span>
+            </a>
+
+            <a id="hero-github-link" href="https://github.com/jaylheebobita" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-babygreen-600 dark:hover:text-babygreen-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Jaylhee Bobita GitHub Profile" title="GitHub Profile">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Hero Avatar (Circular Profile, Flat Soft Green Border, NO GLOW) -->
+        <div class="w-full md:w-2/5 flex justify-center md:justify-end">
+          <div class="relative group">
+            <!-- Flat decorative ring with no drop-shadow glow -->
+            <div class="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full p-1.5 bg-gradient-to-tr from-babygreen-200 via-white to-babygreen-300 dark:from-slate-800 dark:via-slate-800 dark:to-babygreen-800 border-2 border-babygreen-300 dark:border-babygreen-700/80">
+              <img 
+                id="hero-profile-img"
+                src="./profile.jpg" 
+                alt="Jaylhee B. Bobita - Profile" 
+                class="w-full h-full object-cover rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                onerror="this.src='./assets/profile.jpg'"
+              />
+            </div>
+
+            <!-- Soft status pill -->
+            <div class="absolute -bottom-2 right-4 sm:right-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-babygreen-200 dark:border-slate-700 text-[11px] font-medium text-slate-700 dark:text-slate-300 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-babygreen-500"></span>
+              <span>Available for IT Roles</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. EDUCATION SECTION
+         ========================================== -->
+    <section id="education" class="scroll-mt-24 space-y-6">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <h2 class="text-xs font-semibold tracking-wider uppercase text-babygreen-600 dark:text-babygreen-400 font-display">Academic Background</h2>
+          <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display">Education</p>
+        </div>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Formal Learning & Qualifications</span>
+      </div>
+
+      <!-- Education Timeline Container (Rendered Dynamically) -->
+      <div id="education-container" class="relative pl-6 sm:pl-8 border-l border-babygreen-200 dark:border-babygreen-800/60 space-y-8 sm:space-y-10 my-4">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. SKILLS SECTION
+         ========================================== -->
+    <section id="skills" class="scroll-mt-24 space-y-6">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <h2 class="text-xs font-semibold tracking-wider uppercase text-babygreen-600 dark:text-babygreen-400 font-display">Core Competencies</h2>
+          <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display">Skills & Knowledge</p>
+        </div>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Hands-on Technical & Functional Capabilities</span>
+      </div>
+
+      <!-- Skills Cards Grid (Rendered Dynamically) -->
+      <div id="skills-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. PROJECTS SECTION
+         ========================================== -->
+    <section id="projects" class="scroll-mt-24 space-y-6">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <h2 class="text-xs font-semibold tracking-wider uppercase text-babygreen-600 dark:text-babygreen-400 font-display">Portfolio Works</h2>
+          <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display">Featured Projects</p>
+        </div>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Recent Web Applications & Systems</span>
+      </div>
+
+      <!-- Projects Grid (Rendered Dynamically) -->
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. CERTIFICATES SECTION
+         ========================================== -->
+    <section id="certificates" class="scroll-mt-24 space-y-6">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <h2 class="text-xs font-semibold tracking-wider uppercase text-babygreen-600 dark:text-babygreen-400 font-display">Verified Credentials</h2>
+          <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display">Certificates & Awards</p>
+        </div>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Official Industry Accreditations</span>
+      </div>
+
+      <!-- Certificates Grid (Rendered Dynamically) -->
+      <div id="certificates-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. CONTACT & INQUIRY SECTION
+         ========================================== -->
+    <section id="contact" class="scroll-mt-24 space-y-6">
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <h2 class="text-xs font-semibold tracking-wider uppercase text-babygreen-600 dark:text-babygreen-400 font-display">Get In Touch</h2>
+          <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display">Contact Information</p>
+        </div>
+        <span class="text-xs text-slate-500 dark:text-slate-400">Let's Connect for Opportunities & Collaborations</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Contact Cards Column (Left) -->
+        <div class="lg:col-span-5 space-y-4">
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Feel free to reach out for inquiries, internship opportunities, collaborative projects, or simply to say hello. I look forward to connecting with you!
+          </p>
+
+          <!-- Direct Contact Cards -->
+          <div class="space-y-3 pt-2">
+            
+            <!-- Email Item -->
+            <div class="p-3.5 rounded-lg border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-850 flex items-center justify-between group hover:border-babygreen-300 dark:hover:border-babygreen-700 transition-colors">
+              <div class="flex items-center space-x-3 min-w-0">
+                <div class="w-9 h-9 rounded-md bg-babygreen-50 dark:bg-slate-800 text-babygreen-600 dark:text-babygreen-400 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+                <div class="truncate">
+                  <span class="block text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">Email Address</span>
+                  <a id="contact-email" href="mailto:jaylheebobita592@gmail.com" class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-babygreen-600 dark:hover:text-babygreen-400 truncate block transition-colors">
+                    jaylheebobita592@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('jaylheebobita592@gmail.com', 'Email copied to clipboard!')" class="p-1.5 rounded text-slate-400 hover:text-babygreen-600 dark:hover:text-babygreen-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors ml-2" title="Copy Email">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+            <!-- Phone Item -->
+            <div class="p-3.5 rounded-lg border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-850 flex items-center justify-between group hover:border-babygreen-300 dark:hover:border-babygreen-700 transition-colors">
+              <div class="flex items-center space-x-3 min-w-0">
+                <div class="w-9 h-9 rounded-md bg-babygreen-50 dark:bg-slate-800 text-babygreen-600 dark:text-babygreen-400 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="block text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">Phone / Mobile</span>
+                  <a id="contact-phone" href="tel:09655161961" class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-babygreen-600 dark:hover:text-babygreen-400 transition-colors">
+                    09655161961
+                  </a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('09655161961', 'Phone number copied to clipboard!')" class="p-1.5 rounded text-slate-400 hover:text-babygreen-600 dark:hover:text-babygreen-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors ml-2" title="Copy Phone Number">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+            <!-- GitHub Item -->
+            <div class="p-3.5 rounded-lg border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-850 flex items-center justify-between group hover:border-babygreen-300 dark:hover:border-babygreen-700 transition-colors">
+              <div class="flex items-center space-x-3 min-w-0">
+                <div class="w-9 h-9 rounded-md bg-babygreen-50 dark:bg-slate-800 text-babygreen-600 dark:text-babygreen-400 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </div>
+                <div class="truncate">
+                  <span class="block text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">GitHub Profile</span>
+                  <a id="contact-github" href="https://github.com/jaylheebobita" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-babygreen-600 dark:hover:text-babygreen-400 truncate block transition-colors">
+                    github.com/jaylheebobita
+                  </a>
+                </div>
+              </div>
+              <a href="https://github.com/jaylheebobita" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded text-slate-400 hover:text-babygreen-600 dark:hover:text-babygreen-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors ml-2" title="Visit GitHub">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+
+            <!-- Location Item -->
+            <div class="p-3.5 rounded-lg border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-850 flex items-center space-x-3">
+              <div class="w-9 h-9 rounded-md bg-babygreen-50 dark:bg-slate-800 text-babygreen-600 dark:text-babygreen-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <span class="block text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">Location</span>
+                <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">
+                  Bangued, Abra, Philippines
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Interactive Direct Message Form (Right) -->
+        <div class="lg:col-span-7 bg-white dark:bg-slate-850 p-5 sm:p-6 rounded-xl border border-slate-200/90 dark:border-slate-800 space-y-4">
+          <div class="space-y-1">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-white font-display">Send a Direct Message</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Fill out this quick form to generate a direct email message to Jaylhee.</p>
+          </div>
+
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="sender-name" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                <input type="text" id="sender-name" required placeholder="Juan Dela Cruz" class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-babygreen-400 dark:focus:border-babygreen-500 transition-colors" />
+              </div>
+              <div>
+                <label for="sender-email" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                <input type="email" id="sender-email" required placeholder="name@example.com" class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-babygreen-400 dark:focus:border-babygreen-500 transition-colors" />
+              </div>
+            </div>
+
+            <div>
+              <label for="sender-subject" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+              <input type="text" id="sender-subject" required placeholder="Project Collaboration / Inquiries" class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-babygreen-400 dark:focus:border-babygreen-500 transition-colors" />
+            </div>
+
+            <div>
+              <label for="sender-message" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+              <textarea id="sender-message" rows="4" required placeholder="Write your message here..." class="w-full text-xs px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-babygreen-400 dark:focus:border-babygreen-500 transition-colors"></textarea>
+            </div>
+
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-lg text-xs font-semibold bg-babygreen-500 hover:bg-babygreen-600 text-white transition-colors duration-150">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       8. MINIMALIST FOOTER
+       ========================================== -->
+  <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        
+        <!-- Left: Logo & Copyright -->
+        <div class="flex items-center space-x-3">
+          <div class="w-7 h-7 rounded-full bg-babygreen-100 dark:bg-slate-800 border border-babygreen-300 dark:border-babygreen-700/60 flex items-center justify-center text-babygreen-700 dark:text-babygreen-400 font-display font-semibold text-xs">
+            JB
+          </div>
+          <p id="footer-copyright">
+            &copy; 2026 Jaylhee B. Bobita. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Right: Social & Quick Links -->
+        <div class="flex items-center space-x-4">
+          <a href="mailto:jaylheebobita592@gmail.com" class="hover:text-babygreen-600 dark:hover:text-babygreen-400 transition-colors flex items-center space-x-1" title="Email Jaylhee">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span>Email</span>
+          </a>
+          <a href="tel:09655161961" class="hover:text-babygreen-600 dark:hover:text-babygreen-400 transition-colors flex items-center space-x-1" title="Call Jaylhee">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+            <span>Call</span>
+          </a>
+          <a href="https://github.com/jaylheebobita" target="_blank" rel="noopener noreferrer" class="hover:text-babygreen-600 dark:hover:text-babygreen-400 transition-colors flex items-center space-x-1" title="GitHub">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="#hero" class="p-1.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-babygreen-600 dark:hover:text-babygreen-400 transition-colors" title="Scroll to Top">
+            <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MEDIA / DETAIL MODAL (LIGHTBOX)
+       ========================================== -->
+  <div id="media-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-sm transition-opacity">
+    <div class="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-850">
+        <div class="flex items-center space-x-2 truncate">
+          <span id="modal-category-badge" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-babygreen-100 dark:bg-babygreen-900/60 text-babygreen-700 dark:text-babygreen-300"></span>
+          <h4 id="modal-title" class="text-sm font-bold text-slate-900 dark:text-white truncate font-display"></h4>
+        </div>
+        <button onclick="closeModal()" aria-label="Close modal" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Image preview + gallery) -->
+      <div class="p-4 sm:p-6 overflow-y-auto space-y-4">
+        <!-- Main Media Preview -->
+        <div class="relative rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+          <img id="modal-image" src="" alt="Preview" class="max-h-[50vh] sm:max-h-[55vh] w-auto max-w-full object-contain mx-auto" />
+        </div>
+
+        <!-- Optional Gallery Carousel Thumbnails -->
+        <div id="modal-gallery-row" class="hidden flex items-center space-x-2 overflow-x-auto py-1">
+          <!-- Gallery thumbnails injected here -->
+        </div>
+
+        <!-- Metadata & Description -->
+        <div class="space-y-2">
+          <div id="modal-meta-row" class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"></div>
+          <p id="modal-description" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-850 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 dark:text-slate-500">Press ESC or click outside to dismiss</span>
+        <div class="flex items-center space-x-2">
+          <a id="modal-external-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-babygreen-500 hover:bg-babygreen-600 text-white transition-colors">
+            <span>View Full / External</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <button onclick="closeModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center space-x-2 px-4 py-2.5 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-medium border border-slate-700 shadow-md transition-all">
+    <i data-lucide="check-circle" class="w-4 h-4 text-babygreen-400 dark:text-babygreen-600"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT: DATA & DYNAMIC RENDERING
+       ========================================== -->
+  <script>
+    /**
+     * CENTRAL JAVASCRIPT DATA OBJECT
+     * Pre-filled with exact personal, academic, skill, project, and certificate data
+     */
+    const portfolioData = {
+      personalInfo: {
+        name: "Jaylhee B. Bobita",
+        title: "BSIT Student & Aspiring IT Professional",
+        email: "jaylheebobita592@gmail.com",
+        phone: "09655161961",
+        github: "https://github.com/jaylheebobita",
+        location: "Bangued, Abra, Philippines",
+        avatar: "./profile.jpg",
+        bio: "Dedicated Information Technology student at Data Center College of the Philippines - Bangued with practical knowledge in networking fundamentals, hardware & software troubleshooting, and office productivity tools. Driven by precision, clean design, and a continuous desire to learn cutting-edge technology."
+      },
+      education: [
+        {
+          id: 1,
+          level: "Tertiary",
+          degree: "Bachelor of Science in Information Technology (BSIT)",
+          institution: "Data Center College of the Philippines - Bangued",
+          period: "2023 - Present",
+          status: "Current Student",
+          location: "Bangued, Abra",
+          description: "Currently pursuing comprehensive studies in Information Technology, with focused coursework in computer networking, systems analysis, programming, and IT troubleshooting fundamentals."
+        },
+        {
+          id: 2,
+          level: "Secondary",
+          degree: "High School Diploma",
+          institution: "Abra High School",
+          period: "2017 – 2023",
+          status: "Graduated",
+          location: "Zone 2, Bangued, Abra",
+          description: "Completed secondary education with solid academic foundations in science, mathematics, and introductory computing applications."
+        }
+      ],
+      skills: [
+        {
+          id: 1,
+          title: "Networking Basics",
+          description: "Fundamental understanding of network concepts, protocols, and configurations.",
+          category: "Infrastructure",
+          icon: "network",
+          highlights: ["TCP/IP & OSI Model", "Subnetting Basics", "LAN/WLAN Setup", "Router & Switch Config"]
+        },
+        {
+          id: 2,
+          title: "Office Productivity",
+          description: "Proficient in Microsoft Office suite and other productivity tools.",
+          category: "Workplace Tools",
+          icon: "file-text",
+          highlights: ["Microsoft Word", "Microsoft Excel", "PowerPoint Presentations", "Google Workspace Docs/Sheets"]
+        },
+        {
+          id: 3,
+          title: "Basic Troubleshooting",
+          description: "Ability to diagnose and resolve common hardware and software issues.",
+          category: "Support & Systems",
+          icon: "wrench",
+          highlights: ["Hardware Diagnostics", "OS Installation & Setup", "Peripherals & Drivers", "Routine Maintenance"]
+        }
+      ],
+      // Projects: Pre-filled with Jaylhee's applications
+      projects: [
+        {
+          id: 1,
+          title: "Balai ti Arjud",
+          category: "WEB APPLICATION",
+          description: "A specialized online restaurant dining and food showcase web application designed for Balai ti Arjud. Features interactive digital menus, responsive layouts across devices, and intuitive food ordering navigation.",
+          image: "./project1.jpg",
+          fallbackImage: "./assets/projects/balai-ti-arjud-thumb.png",
+          link: "#",
+          tags: ["Web Application", "Restaurant System", "Interactive UI", "HTML/CSS/JS"],
+          gallery: [
+            "./assets/projects/balai-ti-arjud/1.png",
+            "./assets/projects/balai-ti-arjud/2.png",
+            "./assets/projects/balai-ti-arjud/3.png",
+            "./assets/projects/balai-ti-arjud/4.png",
+            "./assets/projects/balai-ti-arjud/5.png",
+            "./assets/projects/balai-ti-arjud/6.png"
+          ]
+        },
+        {
+          id: 2,
+          title: "MCA Cafe Ordering System",
+          category: "WEB APPLICATION",
+          description: "A modern point-of-sale and customer ordering application for MCA Cafe. Features streamlined beverage and snack ordering, real-time item selection, and an uncluttered user interface for cafe management.",
+          image: "./project2.jpg",
+          fallbackImage: "./assets/projects/mca-cafe-thumb.png",
+          link: "#",
+          tags: ["Cafe POS", "Menu Management", "Responsive Web App", "Front-End"],
+          gallery: [
+            "./assets/projects/mca-cafe/Screenshot 2026-09-09 223300.png",
+            "./assets/projects/mca-cafe/Screenshot 2026-09-09 223316.png",
+            "./assets/projects/mca-cafe/Screenshot 2026-09-09 223347.png",
+            "./assets/projects/mca-cafe/Screenshot 2026-09-09 223358.png",
+            "./assets/projects/mca-cafe/Screenshot 2026-09-09 223410.png"
+          ]
+        }
+      ],
+      // Certificates: Pre-filled with Jaylhee's 2 official credentials
+      certificates: [
+        {
+          id: 1,
+          title: "Online Safety Through Netiquette",
+          issuer: "Department of Information and Communications Technology (DICT) Region II",
+          date: "July 23, 2026",
+          image: "./cert1.jpg",
+          fallbackImage: "./assets/cert-dict-netiquette.jpg",
+          badge: "DICT Verified",
+          signatory: "Engr. Pinky T. Jimenez, PECE, Ph.D. (Regional Director)",
+          description: "Certificate of Participation awarded in recognition of active participation and commitment to promoting responsible, ethical, and secure use of technologies during the DICT webinar conducted via Google Meet."
+        },
+        {
+          id: 2,
+          title: "Introduction to Modern AI",
+          issuer: "Cisco Networking Academy",
+          date: "October 22, 2026",
+          image: "./cert2.jpg",
+          fallbackImage: "./assets/cert-cisco-ai.jpg",
+          badge: "Cisco Credential",
+          signatory: "Lynn Bloomer (Director, Cisco Networking Academy)",
+          certId: "7afs3f01-02d5-4402-ad99-39dbf5fff88cu",
+          description: "Official Cisco certificate for successfully completing the Introduction to Modern AI course offered by Networking Academy through the Cisco Networking Academy program."
+        }
+      ]
+    };
+
+    /**
+     * DYNAMIC RENDERING ENGINE
+     */
+    function renderPortfolio() {
+      // 1. Personal Info in Hero & Footer
+      document.getElementById('hero-name').textContent = portfolioData.personalInfo.name;
+      document.getElementById('hero-bio').textContent = portfolioData.personalInfo.bio;
+      document.getElementById('hero-profile-img').src = portfolioData.personalInfo.avatar;
+      document.getElementById('hero-github-link').href = portfolioData.personalInfo.github;
+      
+      document.getElementById('contact-email').textContent = portfolioData.personalInfo.email;
+      document.getElementById('contact-email').href = `mailto:${portfolioData.personalInfo.email}`;
+      document.getElementById('contact-phone').textContent = portfolioData.personalInfo.phone;
+      document.getElementById('contact-phone').href = `tel:${portfolioData.personalInfo.phone}`;
+      document.getElementById('contact-github').href = portfolioData.personalInfo.github;
+
+      // 2. Education Section
+      const educationContainer = document.getElementById('education-container');
+      educationContainer.innerHTML = portfolioData.education.map((edu, idx) => `
+        <div class="relative group">
+          <!-- Timeline Node Bullet (Soft flat baby green, strictly no neon glow) -->
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-white dark:bg-slate-900 border-2 border-babygreen-500 group-hover:scale-110 transition-transform"></div>
+          
+          <div class="bg-white dark:bg-slate-850 p-4 sm:p-5 rounded-lg border border-slate-200/90 dark:border-slate-800 transition-colors hover:border-babygreen-300 dark:hover:border-babygreen-700/60">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-babygreen-100 dark:bg-slate-800 text-babygreen-700 dark:text-babygreen-400 border border-babygreen-200/60 dark:border-slate-700">
+                ${edu.level} Education
+              </span>
+              <span class="text-xs font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 text-babygreen-600 dark:text-babygreen-400"></i>
+                ${edu.period}
+              </span>
+            </div>
+
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-display">
+              ${edu.degree}
+            </h3>
+
+            <p class="text-xs sm:text-sm font-medium text-babygreen-700 dark:text-babygreen-400 mt-0.5">
+              ${edu.institution}
+            </p>
+
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i>
+              ${edu.location}
+            </p>
+
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+              ${edu.description}
+            </p>
+          </div>
+        </div>
+      `).join('');
+
+      // 3. Skills Section (Grid of compact cards with thin green left-border accent)
+      const skillsContainer = document.getElementById('skills-container');
+      skillsContainer.innerHTML = portfolioData.skills.map(skill => `
+        <div class="bg-white dark:bg-slate-850 p-4 sm:p-5 rounded-lg border border-slate-200/90 dark:border-slate-800 border-l-[3px] border-l-babygreen-500 dark:border-l-babygreen-500 transition-all hover:border-babygreen-300 dark:hover:border-babygreen-700/60 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="w-8 h-8 rounded-md bg-babygreen-50 dark:bg-slate-800 border border-babygreen-200/80 dark:border-slate-700 flex items-center justify-center text-babygreen-600 dark:text-babygreen-400">
+                <i data-lucide="${skill.icon || 'check'}" class="w-4 h-4"></i>
+              </div>
+              <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+                ${skill.category}
+              </span>
+            </div>
+
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">
+              ${skill.title}
+            </h3>
+
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              ${skill.description}
+            </p>
+          </div>
+
+          <!-- Highlight tags -->
+          <div class="flex flex-wrap gap-1.5 pt-3 mt-2 border-t border-slate-100 dark:border-slate-800">
+            ${skill.highlights.map(tag => `
+              <span class="px-2 py-0.5 text-[10px] font-medium rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700">
+                ${tag}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      // 4. Projects Section
+      const projectsContainer = document.getElementById('projects-container');
+      projectsContainer.innerHTML = portfolioData.projects.map(project => `
+        <div class="group bg-white dark:bg-slate-850 rounded-lg border border-slate-200/90 dark:border-slate-800 overflow-hidden flex flex-col justify-between hover:border-babygreen-300 dark:hover:border-babygreen-700/60 transition-colors">
+          
+          <!-- Image thumbnail with View overlay -->
+          <div class="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-b border-slate-200/70 dark:border-slate-800">
+            <img 
+              src="${project.image}" 
+              alt="${project.title}" 
+              class="w-full h-full object-cover object-top transition-transform duration-200 group-hover:scale-[1.02]"
+              onerror="if (this.src !== '${project.fallbackImage}') this.src = '${project.fallbackImage}'"
+            />
+            <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <button 
+                onclick="openProjectModal(${project.id})" 
+                class="px-3.5 py-1.5 rounded-md text-xs font-semibold bg-white text-slate-900 shadow-sm hover:bg-babygreen-50 transition-colors flex items-center space-x-1.5"
+              >
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-babygreen-600"></i>
+                <span>Quick View</span>
+              </button>
+            </div>
+            
+            <div class="absolute top-2.5 left-2.5">
+              <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded bg-white/95 dark:bg-slate-900/95 text-babygreen-700 dark:text-babygreen-300 border border-babygreen-200/80 dark:border-babygreen-800/80">
+                ${project.category}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white font-display">
+                ${project.title}
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-3">
+                ${project.description}
+              </p>
+            </div>
+
+            <!-- Tags & Actions -->
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div class="flex flex-wrap gap-1">
+                ${project.tags.slice(0, 3).map(tag => `
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                    ${tag}
+                  </span>
+                `).join('')}
+              </div>
+
+              <button 
+                onclick="openProjectModal(${project.id})" 
+                class="inline-flex items-center space-x-1 text-xs font-semibold text-babygreen-600 dark:text-babygreen-400 hover:text-babygreen-700 dark:hover:text-babygreen-300 transition-colors ml-2"
+              >
+                <span>View</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      `).join('');
+
+      // 5. Certificates Section
+      const certContainer = document.getElementById('certificates-container');
+      certContainer.innerHTML = portfolioData.certificates.map(cert => `
+        <div class="group bg-white dark:bg-slate-850 rounded-lg border border-slate-200/90 dark:border-slate-800 overflow-hidden flex flex-col justify-between hover:border-babygreen-300 dark:hover:border-babygreen-700/60 transition-colors">
+          
+          <!-- Certificate preview thumbnail -->
+          <div class="relative aspect-[4/3] sm:aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-b border-slate-200/70 dark:border-slate-800">
+            <img 
+              src="${cert.image}" 
+              alt="${cert.title}" 
+              class="w-full h-full object-contain p-2 sm:p-3 transition-transform duration-200 group-hover:scale-[1.01]"
+              onerror="if (this.src !== '${cert.fallbackImage}') this.src = '${cert.fallbackImage}'"
+            />
+            <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <button 
+                onclick="openCertModal(${cert.id})" 
+                class="px-3.5 py-1.5 rounded-md text-xs font-semibold bg-white text-slate-900 shadow-sm hover:bg-babygreen-50 transition-colors flex items-center space-x-1.5"
+              >
+                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-babygreen-600"></i>
+                <span>Enlarge Certificate</span>
+              </button>
+            </div>
+            
+            <div class="absolute top-2.5 left-2.5">
+              <span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-babygreen-500 text-white">
+                ${cert.badge}
+              </span>
+            </div>
+          </div>
+
+          <!-- Certificate details -->
+          <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                <span class="flex items-center gap-1 font-medium text-babygreen-700 dark:text-babygreen-400 truncate">
+                  <i data-lucide="award" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                  ${cert.issuer}
+                </span>
+                <span class="text-[11px] whitespace-nowrap ml-2">${cert.date}</span>
+              </div>
+
+              <h3 class="text-base font-bold text-slate-900 dark:text-white font-display">
+                ${cert.title}
+              </h3>
+
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                ${cert.description}
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 truncate">
+                ${cert.signatory || ''}
+              </span>
+
+              <button 
+                onclick="openCertModal(${cert.id})" 
+                class="inline-flex items-center space-x-1 text-xs font-semibold text-babygreen-600 dark:text-babygreen-400 hover:text-babygreen-700 dark:hover:text-babygreen-300 transition-colors ml-2"
+              >
+                <span>View</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      `).join('');
+
+      // Refresh Lucide Icons after dynamic insertion
+      lucide.createIcons();
+    }
+
+    /**
+     * THEME TOGGLE LOGIC (Working Dark / Light Mode)
+     * Enforces flat matte background and soft baby green accents
+     */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    /**
+     * MOBILE MENU TOGGLE
+     */
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isClosed = mobileMenu.classList.contains('hidden');
+      if (isClosed) {
+        mobileMenu.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      }
+    });
+
+    // Auto-close mobile menu upon clicking links
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
+    });
+
+    /**
+     * MODAL / LIGHTBOX SYSTEM
+     */
+    const modal = document.getElementById('media-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategoryBadge = document.getElementById('modal-category-badge');
+    const modalDescription = document.getElementById('modal-description');
+    const modalMetaRow = document.getElementById('modal-meta-row');
+    const modalGalleryRow = document.getElementById('modal-gallery-row');
+    const modalExternalLink = document.getElementById('modal-external-link');
+
+    function openProjectModal(projectId) {
+      const proj = portfolioData.projects.find(p => p.id === projectId);
+      if (!proj) return;
+
+      modalTitle.textContent = proj.title;
+      modalCategoryBadge.textContent = proj.category;
+      modalDescription.textContent = proj.description;
+      modalImage.src = proj.image;
+      modalImage.onerror = () => { modalImage.src = proj.fallbackImage; };
+
+      modalMetaRow.innerHTML = proj.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]">${t}</span>`).join('');
+
+      // Setup gallery previews if available
+      if (proj.gallery && proj.gallery.length > 1) {
+        modalGalleryRow.classList.remove('hidden');
+        modalGalleryRow.innerHTML = proj.gallery.map((imgSrc, i) => `
+          <button onclick="setModalMainImage('${imgSrc}')" class="w-14 h-10 rounded border border-slate-300 dark:border-slate-700 overflow-hidden flex-shrink-0 hover:border-babygreen-500 focus:outline-none">
+            <img src="${imgSrc}" class="w-full h-full object-cover" alt="Screenshot ${i+1}" />
+          </button>
+        `).join('');
+      } else {
+        modalGalleryRow.classList.add('hidden');
+        modalGalleryRow.innerHTML = '';
+      }
+
+      if (proj.link && proj.link !== '#') {
+        modalExternalLink.href = proj.link;
+        modalExternalLink.classList.remove('hidden');
+      } else {
+        modalExternalLink.classList.add('hidden');
+      }
+
+      showModal();
+    }
+
+    function openCertModal(certId) {
+      const cert = portfolioData.certificates.find(c => c.id === certId);
+      if (!cert) return;
+
+      modalTitle.textContent = cert.title;
+      modalCategoryBadge.textContent = cert.badge || "Certificate";
+      modalDescription.textContent = cert.description;
+      modalImage.src = cert.image;
+      modalImage.onerror = () => { modalImage.src = cert.fallbackImage; };
+
+      modalMetaRow.innerHTML = `
+        <span class="px-2 py-0.5 rounded bg-babygreen-50 dark:bg-slate-800 text-babygreen-700 dark:text-babygreen-300 text-[11px] font-medium">Issuer: ${cert.issuer}</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]">Date: ${cert.date}</span>
+        ${cert.certId ? `<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]">ID: ${cert.certId}</span>` : ''}
+      `;
+
+      modalGalleryRow.classList.add('hidden');
+      modalGalleryRow.innerHTML = '';
+      modalExternalLink.classList.add('hidden');
+
+      showModal();
+    }
+
+    function setModalMainImage(src) {
+      modalImage.src = src;
+    }
+
+    function showModal() {
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Modal background click and ESC key listener
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    /**
+     * TOAST NOTIFICATION & COPY-TO-CLIPBOARD
+     */
+    function copyToClipboard(text, customMessage) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(customMessage || 'Copied to clipboard!');
+      }).catch(() => {
+        showToast('Unable to copy. Please manually copy.');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2500);
+    }
+
+    /**
+     * CONTACT FORM HANDLER
+     */
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('sender-name').value;
+      const email = document.getElementById('sender-email').value;
+      const subject = document.getElementById('sender-subject').value;
+      const message = document.getElementById('sender-message').value;
+
+      // Construct mailto link
+      const mailtoUrl = `mailto:${portfolioData.personalInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+      window.location.href = mailtoUrl;
+
+      showToast("Redirecting to email client...");
+      document.getElementById('contact-form').reset();
+    }
+
+    // Initial render on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPortfolio();
+    });
+  </script>
+</body>
+</html>
